@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Portée Management | Airbnb Co-Hosting & Property Management</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+name="description"
+content="Portée Management provides stress-free Airbnb co-hosting and short-term rental property management so owners earn more with less work."
+/>
+<style>
+:root {
+--bg: #050507;
+--card: #111217;
+--accent: #d4af37;
+--accent-soft: rgba(212, 175, 55, 0.15);
+--text-main: #f7f7f7;
+--text-muted: #b3b3b8;
+--border-subtle: #2a2b32;
+}
+
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+body {
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+sans-serif;
+background: radial-gradient(circle at top, #151623 0, #050507 50%);
+color: var(--text-main);
+line-height: 1.6;
+}
+
+a {
+color: inherit;
+text-decoration: none;
+}
+
+img {
+max-width: 100%;
+display: block;
+}
+
+.container {
+width: min(1120px, 100%);
+margin: 0 auto;
+padding: 0 1.25rem;
+}
+
+header {
+position: sticky;
+top: 0;
+z-index: 20;
+backdrop-filter: blur(18px);
+background: linear-gradient(
+to bottom,
+rgba(5, 5, 7, 0.96),
+rgba(5, 5, 7, 0.75),
+transparent
+);
+border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.nav {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 0.9rem 0;
+}
+
+.logo-mark {
+display: flex;
+align-items: center;
+gap: 0.7rem;
+}
+
+.logo-icon {
+width: 34px;
+height: 34px;
+border-radius: 10px;
+background: radial-gradient(circle at 30% 20%, #fef6d9, #d4af37);
+display: flex;
+align-items: center;
+justify-content: center;
+color: #111217;
+font-weight: 700;
+font-size: 0.9rem;
+box-shadow: 0 0 18px rgba(212, 175, 55, 0.45);
+}
+
+.logo-text-main {
+font-weight: 600;
+letter-spacing: 0.08em;
+font-size: 0.9rem;
+text-transform: uppercase;
+}
+
+.logo-text-sub {
+font-size: 0.72rem;
+color: var(--text-muted);
+}
+
+.nav-links {
+display: flex;
+gap: 1.5rem;
+align-items: center;
+font-size: 0.88rem;
+}
+
+.nav-links a {
+color: var(--text-muted);
+position: relative;
+}
+
+.nav-links a::after {
+content: "";
+position: absolute;
+left: 0;
+bottom: -0.25rem;
+width: 0;
+height: 1px;
+background: var(--accent);
+transition: width 0.2s ease;
+}
+
+.nav-links a:hover::after {
+width: 100%;
+}
+
+.btn {
+border-radius: 999px;
+padding: 0.55rem 1.2rem;
+border: 1px solid var(--accent);
+background: radial-gradient(circle at top left, #f4d889, #d4af37);
+color: #111217;
+font-size: 0.85rem;
+font-weight: 600;
+cursor: pointer;
+transition: transform 0.12s ease, box-shadow 0.12s ease,
+filter 0.12s ease;
+white-space: nowrap;
+}
+
+.btn:hover {
+transform: translateY(-1px);
+filter: brightness(1.02);
+box-shadow: 0 0 20px rgba(212, 175, 55, 0.35);
+}
+
+.btn-outline {
+background: transparent;
+color: var(--text-main);
+border: 1px solid rgba(212, 175, 55, 0.5);
+}
+
+.btn-outline:hover {
+background: var(--accent-soft);
+box-shadow: 0 0 16px rgba(0, 0, 0, 0.6);
+}
+
+main {
+padding-bottom: 4rem;
+}
+
+/* Hero */
+
+.hero {
+padding: 3.5rem 0 3rem;
+}
+
+.hero-grid {
+display: grid;
+grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+gap: 2.5rem;
+align-items: center;
+}
+
+.eyebrow {
+font-size: 0.8rem;
+text-transform: uppercase;
+letter-spacing: 0.18em;
+color: var(--accent);
+margin-bottom: 0.75rem;
+}
+
+.hero h1 {
+font-size: clamp(2.1rem, 3vw + 1.2rem, 3rem);
+line-height: 1.1;
+margin-bottom: 1rem;
+}
+
+.hero h1 span {
+color: var(--accent);
+}
+
+.hero-sub {
+color: var(--text-muted);
+max-width: 32rem;
+margin-bottom: 1.3rem;
+font-size: 0.98rem;
+}
+
+.hero-badges {
+display: flex;
+flex-wrap: wrap;
+gap: 0.75rem;
+margin-bottom: 1.8rem;
+}
+
+.badge {
+font-size: 0.75rem;
+padding: 0.3rem 0.75rem;
+border-radius: 999px;
+border: 1px solid rgba(212, 175, 55, 0.4);
+background: rgba(5, 5, 7, 0.7);
+color: var(--text-muted);
+}
+
+.hero-actions {
+display: flex;
+flex-wrap: wrap;
+gap: 0.75rem;
+align-items: center;
+margin-bottom: 1.25rem;
+}
+
+.hero-note {
+font-size: 0.8rem;
+color: var(--text-muted);
+}
+
+.hero-card {
+background: radial-gradient(circle at top, #1b1c27, #090910);
+border-radius: 18px;
+padding: 1.5rem 1.3rem;
+border: 1px solid rgba(212, 175, 55, 0.28);
+box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
+}
+
+.hero-card-title {
+font-size: 0.9rem;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+color: var(--accent);
+margin-bottom: 0.75rem;
+}
+
+.hero-card-main {
+font-size: 0.95rem;
+margin-bottom: 0.9rem;
+}
+
+.hero-metrics {
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 1rem;
+font-size: 0.78rem;
+}
+
+.metric-label {
+color: var(--text-muted);
+margin-bottom: 0.15rem;
+}
+
+.metric-value {
+font-weight: 600;
+}
+
+/* Sections */
+
+section {
+padding: 2.75rem 0;
+border-top: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+section:nth-of-type(even) {
+background: radial-gradient(circle at top left, #101018, #050507);
+}
+
+.section-header {
+margin-bottom: 1.8rem;
+display: flex;
+flex-direction: column;
+gap: 0.3rem;
+}
+
+.section-header h2 {
+font-size: 1.3rem;
+}
+
+.section-header p {
+font-size: 0.9rem;
+color: var(--text-muted);
+max-width: 32rem;
+}
+
+/* Services */
+
+.service-grid {
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 1.6rem;
+}
+
+.card {
+background: rgba(9, 9, 14, 0.95);
+border-radius: 16px;
+padding: 1.3rem 1.2rem 1.25rem;
+border: 1px solid var(--border-subtle);
+box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
+}
+
+.card h3 {
+font-size: 1rem;
+margin-bottom: 0.3rem;
+}
+
+.pill {
+display: inline-block;
+margin-bottom: 0.65rem;
+font-size: 0.72rem;
+padding: 0.25rem 0.65rem;
+border-radius: 999px;
+background: var(--accent-soft);
+color: var(--accent);
+border: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+.rate {
+font-size: 0.88rem;
+color: var(--accent);
+margin-bottom: 0.45rem;
+font-weight: 500;
+}
+
+.card ul {
+list-style: none;
+font-size: 0.86rem;
+color: var(--text-muted);
+}
+
+.card ul li {
+margin-bottom: 0.35rem;
+padding-left: 1rem;
+position: relative;
+}
+
+.card ul li::before {
+content: "•";
+position: absolute;
+left: 0;
+color: var(--accent);
+}
+
+.note {
+font-size: 0.8rem;
+color: var(--text-muted);
+margin-top: 0.8rem;
+}
+
+/* Why choose */
+
+.why-grid {
+display: grid;
+grid-template-columns: 1.2fr 1fr;
+gap: 2rem;
+}
+
+.why-points {
+display: grid;
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 1rem;
+}
+
+.why-item {
+font-size: 0.85rem;
+background: rgba(9, 9, 14, 0.9);
+border-radius: 12px;
+padding: 0.8rem 0.85rem;
+border: 1px solid rgba(212, 175, 55, 0.12);
+color: var(--text-muted);
+}
+
+.why-item span {
+display: block;
+font-weight: 500;
+color: var(--text-main);
+margin-bottom: 0.15rem;
+}
+
+/* How it works */
+
+.steps {
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 1rem;
+}
+
+.step-number {
+font-size: 0.75rem;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+color: var(--accent);
+margin-bottom: 0.3rem;
+}
+
+.step-title {
+font-size: 0.95rem;
+margin-bottom: 0.35rem;
+}
+
+.step-text {
+font-size: 0.86rem;
+color: var(--text-muted);
+}
+
+/* Pricing */
+
+.pricing-layout {
+display: grid;
+grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+gap: 1.8rem;
+align-items: flex-start;
+}
+
+.pricing-highlight {
+font-size: 0.88rem;
+color: var(--text-muted);
+margin-top: 0.7rem;
+}
+
+.example-box {
+font-size: 0.82rem;
+background: rgba(9, 9, 14, 0.95);
+border-radius: 12px;
+border: 1px dashed rgba(212, 175, 55, 0.5);
+padding: 0.9rem 0.95rem;
+color: var(--text-muted);
+}
+
+.example-box strong {
+color: var(--accent);
+}
+
+/* About */
+
+.about-grid {
+display: grid;
+grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+gap: 1.8rem;
+align-items: center;
+}
+
+.about-text {
+font-size: 0.9rem;
+color: var(--text-muted);
+}
+
+.about-tag {
+font-size: 0.8rem;
+color: var(--accent);
+margin-bottom: 0.35rem;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+}
+
+.about-card {
+border-radius: 16px;
+border: 1px solid rgba(212, 175, 55, 0.32);
+padding: 1.1rem 1.1rem 1rem;
+background: radial-gradient(circle at top left, #181824, #050507);
+font-size: 0.84rem;
+color: var(--text-muted);
+}
+
+.about-label {
+font-size: 0.78rem;
+color: var(--text-muted);
+text-transform: uppercase;
+letter-spacing: 0.16em;
+margin-bottom: 0.3rem;
+}
+
+/* Contact */
+
+.contact-layout {
+display: grid;
+grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+gap: 1.8rem;
+}
+
+form {
+display: grid;
+gap: 0.8rem;
+}
+
+label {
+font-size: 0.8rem;
+color: var(--text-muted);
+display: block;
+margin-bottom: 0.2rem;
+}
+
+input,
+textarea {
+width: 100%;
+border-radius: 10px;
+border: 1px solid var(--border-subtle);
+padding: 0.55rem 0.7rem;
+background: rgba(5, 5, 7, 0.9);
+color: var(--text-main);
+font-size: 0.86rem;
+outline: none;
+}
+
+input:focus,
+textarea:focus {
+border-color: var(--accent);
+box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.35);
+}
+
+textarea {
+min-height: 120px;
+resize: vertical;
+}
+
+.contact-meta {
+font-size: 0.86rem;
+color: var(--text-muted);
+}
+
+.contact-meta p + p {
+margin-top: 0.4rem;
+}
+
+footer {
+border-top: 1px solid rgba(255, 255, 255, 0.05);
+padding: 1.3rem 0 2rem;
+font-size: 0.8rem;
+color: var(--text-muted);
+}
+
+.footer-inner {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+gap: 0.75rem;
+align-items: center;
+}
+
+.footer-links {
+display: flex;
+gap: 1rem;
+flex-wrap: wrap;
+}
+
+.footer-links a {
+color: var(--text-muted);
+font-size: 0.8rem;
+}
+
+/* Responsive */
+
+@media (max-width: 880px) {
+.hero-grid,
+.service-grid,
+.why-grid,
+.steps,
+.pricing-layout,
+.about-grid,
+.contact-layout {
+grid-template-columns: minmax(0, 1fr);
+}
+
+.service-grid {
+gap: 1.1rem;
+}
+
+.nav-links {
+display: none; /* simple mobile nav; can be upgraded later */
+}
+
+.hero {
+padding-top: 2.5rem;
+}
+}
+
+@media (max-width: 640px) {
+.hero-card {
+margin-top: 0.5rem;
+}
+
+section {
+padding: 2.2rem 0;
+}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="container nav">
+<div class="logo-mark">
+<div class="logo-icon">PM</div>
+<div>
+<div class="logo-text-main">PORTÉE MANAGEMENT</div>
+<div class="logo-text-sub">Airbnb Co-Hosting & STR Management</div>
+</div>
+</div>
+<nav class="nav-links">
+<a href="#services">Services</a>
+<a href="#why">Why Us</a>
+<a href="#how">How It Works</a>
+<a href="#pricing">Pricing</a>
+<a href="#contact">Contact</a>
+<button class="btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+Free Audit
+</button>
+</nav>
+</div>
+</header>
+
+<main>
+<!-- Hero -->
+<section class="hero">
+<div class="container hero-grid">
+<div>
+<div class="eyebrow">Airbnb Co-Hosting · Short-Term Rental Management</div>
+<h1>
+Stress-Free <span>Hosting</span>.<br />
+Portée Management Runs the Rest.
+</h1>
+<p class="hero-sub">
+You keep ownership and control of your property. We handle the guests,
+cleaners, pricing, and day-to-day operations so you can earn more
+with less work.
+</p>
+<div class="hero-badges">
+<span class="badge">5-minute guest response goal</span>
+<span class="badge">Dynamic pricing optimization</span>
+<span class="badge">Cleaning fee paid by guests</span>
+</div>
+<div class="hero-actions">
+<button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+Schedule a Free Listing Audit
+</button>
+<button class="btn-outline" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+View Services
+</button>
+</div>
+<p class="hero-note">
+No upfront fees · We only earn when you earn.
+</p>
+</div>
+<aside class="hero-card" aria-label="Performance preview">
+<div class="hero-card-title">Listing Performance Snapshot</div>
+<div class="hero-card-main">
+Smart pricing, fast communication, and reliable cleaners working
+together for higher occupancy and better reviews.
+</div>
+<div class="hero-metrics">
+<div>
+<div class="metric-label">Target Occupancy</div>
+<div class="metric-value">70–85%</div>
+</div>
+<div>
+<div class="metric-label">Response Time</div>
+<div class="metric-value">&lt; 5 minutes</div>
+</div>
+<div>
+<div class="metric-label">Co-Hosting Fee</div>
+<div class="metric-value">10–25% of revenue</div>
+</div>
+</div>
+</aside>
+</div>
+</section>
+
+<!-- Services -->
+<section id="services">
+<div class="container">
+<div class="section-header">
+<h2>Co-Hosting Services</h2>
+<p>
+Choose the level of support that fits your property. All plans use
+guest-paid cleaning fees, so neither you nor your co-host pays
+cleaners out of pocket.
+</p>
+</div>
+<div class="service-grid">
+<div class="card">
+<span class="pill">Best for experienced hosts</span>
+<h3>Basic Co-Hosting</h3>
+<div class="rate">10% of booking revenue</div>
+<ul>
+<li>5-minute average guest response time</li>
+<li>Calendar & reservation management</li>
+<li>Pre-stay, in-stay & post-stay messaging</li>
+<li>Basic issue coordination with host</li>
+</ul>
+</div>
+<div class="card">
+<span class="pill">Most popular</span>
+<h3>Standard Co-Hosting</h3>
+<div class="rate">15% of booking revenue</div>
+<ul>
+<li>Everything in Basic</li>
+<li>Cleaning and turnover coordination</li>
+<li>Pricing optimization with tools like PriceLabs</li>
+<li>Restock alerts for supplies & essentials</li>
+</ul>
+</div>
+<div class="card">
+<span class="pill">Hands-off hosting</span>
+<h3>Full Service Management</h3>
+<div class="rate">20–25% of booking revenue</div>
+<ul>
+<li>Everything in Standard</li>
+<li>Review management & guest review replies</li>
+<li>Weekly & monthly performance reports</li>
+<li>Supply tracking & issue resolution</li>
+</ul>
+</div>
+</div>
+<p class="note">
+Cleaning fees are built into the guest’s booking total and dedicated
+to paying cleaners — keeping your cash flow simple and predictable.
+</p>
+</div>
+</section>
+
+<!-- Why choose -->
+<section id="why">
+<div class="container why-grid">
+<div>
+<div class="section-header">
+<h2>Why Owners Choose Portée Management</h2>
+<p>
+We focus on clear communication, consistent cleanings, strong
+pricing, and smooth guest experiences so you can focus on
+everything else in your life.
+</p>
+</div>
+<div class="why-points">
+<div class="why-item">
+<span>Fast Guest Support</span>
+Messages answered in minutes, not hours, protecting your rating.
+</div>
+<div class="why-item">
+<span>Smart Pricing</span>
+Tools like PriceLabs help balance occupancy and nightly rates.
+</div>
+<div class="why-item">
+<span>Cleaning Coordination</span>
+Reliable local cleaners scheduled around every check-out.
+</div>
+<div class="why-item">
+<span>Owner Transparency</span>
+Clear reports and full visibility into your calendar & payouts.
+</div>
+</div>
+</div>
+<div class="about-card">
+<div class="about-label">Owner Experience</div>
+<p>
+Whether you’re local, out-of-state, or brand new to Airbnb, Portée
+Management is built to be your on-the-ground (or remote) operator.
+We can help you launch a brand new listing, revive an underperforming
+one, or turn a long-term rental into a profitable short-term stay.
+</p>
+</div>
+</div>
+</section>
+
+<!-- How it works -->
+<section id="how">
+<div class="container">
+<div class="section-header">
+<h2>How It Works</h2>
+<p>
+Simple, transparent steps designed to take you from “curious about
+Airbnb” to “earning truly passive income.”
+</p>
+</div>
+<div class="steps">
+<div>
+<div class="step-number">Step One</div>
+<div class="step-title">Free Listing Audit</div>
+<p class="step-text">
+We review your photos, pricing, amenities, and description — or
+help you design a new listing from scratch — and share what could
+improve your earnings.
+</p>
+</div>
+<div>
+<div class="step-number">Step Two</div>
+<div class="step-title">Setup & Systems</div>
+<p class="step-text">
+We coordinate cleaners, set up dynamic pricing, optimize your
+listing, and create message templates so everything runs smoothly
+from day one.
+</p>
+</div>
+<div>
+<div class="step-number">Step Three</div>
+<div class="step-title">Hands-Off Hosting</div>
+<p class="step-text">
+Guests check in, we manage their stay, you receive payouts.
+You’ll get regular performance updates and recommendations to
+continue improving results.
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Pricing -->
+<section id="pricing">
+<div class="container pricing-layout">
+<div>
+<div class="section-header">
+<h2>Transparent Pricing</h2>
+<p>
+No hidden fees, no surprises. We earn when you earn, and our
+structure is built around your property’s performance.
+</p>
+</div>
+<ul style="list-style:none;font-size:0.9rem;color:var(--text-muted);padding-left:0;">
+<li><strong>Basic:</strong> 10% of booking revenue</li>
+<li><strong>Standard:</strong> 15% of booking revenue</li>
+<li><strong>Full Service:</strong> 20–25% of booking revenue</li>
+</ul>
+<p class="pricing-highlight">
+Cleaning fees are charged to guests and used to pay cleaners,
+keeping hosting expenses aligned directly with each stay.
+</p>
+</div>
+<div class="example-box" aria-label="Example earnings breakdown">
+<strong>Example Property</strong><br /><br />
+Monthly booking revenue: <strong>$3,000</strong><br />
+Co-hosting fee at 20%: <strong>$600</strong> to Portée Management<br />
+Cleaning fees: Paid separately by guests and used to compensate
+cleaners.<br /><br />
+You keep ownership, long-term equity, and the majority of revenue —
+while we handle the operations.
+</div>
+</div>
+</section>
+
+<!-- About -->
+<section id="about">
+<div class="container about-grid">
+<div>
+<div class="about-tag">About Portée Management</div>
+<h2>Built to Serve Busy Owners & Smart Investors</h2>
+<p class="about-text">
+Portée Management exists to give property owners more freedom.
+Whether you’re a landlord in a college town, a first-time Airbnb
+host, or an investor living in another city, managing every message,
+cleaner, and guest issue can quickly become a full-time job.
+<br /><br />
+Our role is simple: run the operations like a professional
+hospitality business while protecting your time, your property, and
+your guest experience. The goal is always the same — reliable
+systems, strong reviews, and healthy monthly payouts.
+</p>
+</div>
+<div class="about-card">
+<div class="about-label">Vision & Long-Term Plan</div>
+<p>
+Over time, Portée Management will expand from co-hosting into
+full-service property and cleaning operations — building a network
+of trusted cleaners, local teams, and systems that support multiple
+properties across different cities.
+<br /><br />
+As we grow, our priority stays the same: treat every home like it’s
+our own investment and every guest like a future 5-star review.
+</p>
+</div>
+</div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+<div class="container">
+<div class="section-header">
+<h2>Request Your Free Listing Audit</h2>
+<p>
+Tell us about your property, your goals, and where you’re located.
+We’ll review your situation and send back clear next steps — no
+obligation.
+</p>
+</div>
+<div class="contact-layout">
+<form
+action="mailto:YOUREM AIL@EXAMPLE.COM"
+method="post"
+enctype="text/plain"
+>
+<!-- TODO: Replace email above with your business email -->
+<div>
+<label for="name">Name</label>
+<input id="name" name="name" type="text" required />
+</div>
+<div>
+<label for="email">Email</label>
+<input id="email" name="email" type="email" required />
+</div>
+<div>
+<label for="location">Property Location (City / State)</label>
+<input id="location" name="location" type="text" />
+</div>
+<div>
+<label for="message">Tell Us About Your Property & Goals</label>
+<textarea id="message" name="message"></textarea>
+</div>
+<button class="btn" type="submit">Send My Audit Request</button>
+</form>
+<div class="contact-meta">
+<p><strong>Email:</strong> porteemanagement@gmail.com</p>
+<!-- TODO: Swap for your final email or domain email -->
+<p>
+<strong>Ideal Clients:</strong> out-of-state owners, busy local
+landlords, and new or struggling Airbnb hosts looking for
+hands-off systems and better returns.
+</p>
+<p>
+<strong>Social:</strong> Add icons/links here for Instagram,
+LinkedIn, or Linktree.
+</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="container footer-inner">
+<div>© <span id="year"></span> Portée Management. All rights reserved.</div>
+<div class="footer-links">
+<a href="#services">Services</a>
+<a href="#pricing">Pricing</a>
+<a href="#contact">Contact</a>
+</div>
+</div>
+</footer>
+
+<script>
+// Set current year in footer
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
